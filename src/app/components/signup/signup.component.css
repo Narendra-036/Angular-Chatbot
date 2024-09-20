@@ -1,7 +1,8 @@
 
-    /* From Uiverse.io by akshat-patel28 */ 
+     
     .form-container {
         width: 350px;
+        height: 100vh;
         background-color: #fff;
         box-sizing: border-box;
         padding: 20px 30px;
