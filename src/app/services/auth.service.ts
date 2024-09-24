@@ -6,19 +6,35 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://http://127.0.0.1:8000/'; // Replace with your Django API URL
+  private baseUrl = 'http://127.0.0.1:8000'; 
 
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login/`, { username: email, password });
+    return this.http.post(`${this.baseUrl}/login/`, { email, password });
+  }
+  
+  register(fullName: string, email: string, password: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/register/`, { full_name: fullName, email, password });
   }
 
-  register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register/`, { username, email, password });
+  chathome(email: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/chat-home/`, { email });
+  }
+
+  createNewChat(email: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/chat_initiate/`, { email });
+  }
+
+  getChatMessages(roomSlug: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/chat/${roomSlug}/`);
+  }
+
+  sendMessage(roomSlug: string, message: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/send_message/`, { room_slug: roomSlug, message });
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('userToken'); 
+    return typeof window !== 'undefined' && !!localStorage.getItem('userToken'); 
   }
-}
+} 

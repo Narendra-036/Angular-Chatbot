@@ -1,22 +1,17 @@
 
-  
-  <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
-  
-  
-    <div class="form-container">
-      <p class="title">
-        Sign Up
-      </p>
-      <form class="form">
-        <input type="text" class="input" placeholder="Full Name">
-        <input type="email" class="input" placeholder="Email">
-        <input type="password" class="input" placeholder="Password">
-        <input type="password" class="input" placeholder="Confirm Password">
-        <button class="form-btn">Sign Up</button>
-      </form>
-      <p class="sign-up-label" >
-        Already have an account? <span class="sign-up-link">login</span>
-      </p>
+<div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+  <div class="form-container">
+    <p class="title">Sign Up</p>
+    <form class="form" (ngSubmit)="onSubmit()" [formGroup]="signupForm">
+      <input type="text" class="input" placeholder="Full Name" formControlName="fullName">
+      <input type="email" class="input" placeholder="Email" formControlName="email">
+      <input type="password" class="input" placeholder="Password" formControlName="password">
+      <input type="password" class="input" placeholder="Confirm Password" formControlName="confirmPassword">
+      <button class="form-btn" type="submit">Sign Up</button>
+    </form>
+    <p class="sign-up-label">
+      Already have an account? <span class="sign-up-link" (click)="navigateToLogin()">Login</span>
+    </p>
       <div class="buttons-container">
         
         <div class="google-login-button">

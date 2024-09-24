@@ -13,13 +13,12 @@ export class LoginComponent implements OnInit {
   submitted = false;
   errorMessage: string | null = null;
 
-  // Change router to public
   public router: Router;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    router: Router // Assigning to the public property
+    router: Router 
   ) {
     this.router = router;
     this.loginForm = this.formBuilder.group({
@@ -30,25 +29,26 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/chat']); // Navigate to chat page if logged in
+      this.router.navigate(['/chat']); 
     }
   }
 
-  // Getter for form controls
   get f() { return this.loginForm.controls; }
 
   onSubmit(): void {
+    this.errorMessage = null;
     this.submitted = true;
   
     // Stop if form is invalid
     if (this.loginForm.invalid) {
+      this.errorMessage = 'Please enter valid email and password';
       return;
     }
-  
-    // Send login request with separate email and password
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
       (response) => {
         if (response.status === 'success') {
+          localStorage.setItem('userToken', response.token); // Store token in localStorage
+          localStorage.setItem('userEmail', this.loginForm.value.email); // Store email in localStorage
           this.router.navigate(['/chat']); // Redirect to chat page on success
         } else {
           this.errorMessage = 'Invalid email or password';
@@ -59,5 +59,6 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+  
   
 }

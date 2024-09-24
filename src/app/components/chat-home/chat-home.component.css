@@ -1,0 +1,127 @@
+.chat-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    padding-bottom: 1.1em;
+}
+
+.main {
+    background-color: white;
+    padding: 1em;
+    padding-bottom: 1.1em;
+    border-radius: 15px;
+    margin: 1em;
+  }
+  
+  .loader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    height: 4em;
+    padding-left: 1em; 
+    padding-right: 1em; 
+    border-radius: 10px;
+    transition: .4s ease-in-out;
+    text-decoration: none;
+  }
+  
+  .loader:hover {
+    cursor: pointer;
+    background-color: lightgray;
+  }
+  
+  .currentplaying {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+  }
+
+  .prev-title {
+    padding: 0.5em;
+  }
+
+  .prev-title h5 {
+    font-size: 1em;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+  }
+
+  .prev-chats-container {
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    padding: 1em;
+  }
+
+  .user-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #000000;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .spotify {
+    width: 50px;
+    height: 50px;
+    margin-right: 0.6em;
+  }
+  
+  .heading {
+    color: black;
+    font-size: 1.1em;
+    font-weight: bold;
+    align-self: center;
+  }
+  
+  .loading {
+    display: flex;
+    margin-top: 1em;
+    margin-left: 0.3em;
+  }
+
+  .play {
+    position: relative;
+    left: 0.35em;
+    height: 1.6em;
+    width: 1.6em;
+    clip-path: polygon(50% 50%, 100% 50%, 75% 6.6%);
+    background-color: black;
+    transform: rotate(-90deg);
+    align-self: center;
+    margin-top: 0.7em;
+    justify-self: center;
+  }
+  
+  .albumcover {
+    position: relative;
+    margin-right: 1em;
+    height: 40px;
+    width: 40px;
+    background-color: rgb(233, 232, 232);
+    align-self: center;
+    border-radius: 5px;
+  }
+  
+  .song {
+    position: relative;
+    margin-right: 1em;
+    color: black;
+    align-self: center;
+  }
+  
+  .artist {
+    font-size: 0.6em;
+  }
