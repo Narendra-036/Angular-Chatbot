@@ -28,7 +28,6 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('clicked');
     if (this.signupForm.valid) {
       const { fullName, email, password } = this.signupForm.value;
       this.authService.register(fullName, email, password).subscribe(

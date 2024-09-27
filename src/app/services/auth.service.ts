@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://127.0.0.1:8000'; 
+  private baseUrl = 'https://chatbot-backend.mr-narendra.live'; 
 
   constructor(private http: HttpClient) {}
 
@@ -14,9 +14,10 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/login/`, { email, password });
   }
   
-  register(fullName: string, email: string, password: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register/`, { full_name: fullName, email, password });
+  register(fullName: string, email: string, password: string,optionalFields?: { [key: string]: any }): Observable<any> {
+    return this.http.post(`${this.baseUrl}/register/`, { full_name: fullName, email, password, ...optionalFields });
   }
+  
 
   chathome(email: string): Observable<any> {
     return this.http.post(`${this.baseUrl}/chat-home/`, { email });
